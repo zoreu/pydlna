@@ -5,7 +5,7 @@ import argparse
 import os
 import shutil
 try:
-  from libs.dlna import getch
+  from dlna import getch
 except:
   import getch
 import subprocess
@@ -969,28 +969,6 @@ class DLNAHandler:
     IP = str(IP)
     IP = (IP,)
     return IP
-  # def retrieve_ips():
-  #   print('PROBLEMA:')
-  #   DWORD = ctypes.wintypes.DWORD
-  #   print('DWORD :', DWORD)
-  #   USHORT = ctypes.wintypes.USHORT
-  #   print('USHORT :', USHORT)
-  #   ULONG = ctypes.wintypes.ULONG
-  #   print('ULONG :', ULONG)
-  #   iphlpapi = ctypes.WinDLL('iphlpapi', use_last_error=True)
-  #   class MIB_IPADDRROW(ctypes.Structure):
-  #     _fields_=[('dwAddr', DWORD), ('dwIndex', DWORD), ('dwMask', DWORD), ('dwBCastAddr', DWORD), ('dwReasmSize', DWORD), ('unused', USHORT), ('wType', USHORT)]
-  #   class MIB_IPADDRTABLE(ctypes.Structure):
-  #     _fields_ = [('dwNumEntries', DWORD), ('table', MIB_IPADDRROW*0)]
-  #   P_MIB_IPADDRTABLE = ctypes.POINTER(MIB_IPADDRTABLE)
-  #   s = ULONG(0)
-  #   b = ctypes.create_string_buffer(s.value)
-  #   while iphlpapi.GetIpAddrTable(b, ctypes.byref(s), False) == 122:
-  #     b = ctypes.create_string_buffer(s.value)
-  #   r = ctypes.cast(b, P_MIB_IPADDRTABLE).contents
-  #   n = r.dwNumEntries
-  #   t = ctypes.cast(ctypes.byref(r.table), ctypes.POINTER(MIB_IPADDRROW * n)).contents
-  #   return tuple(socket.inet_ntoa(e.dwAddr.to_bytes(4, 'little')) for e in t if e.wType & 1)
 
   def __init__(self, ip='', verbosity=0):
     self.Devices = []
